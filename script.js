@@ -63,13 +63,20 @@ let betterBoard;
 let winner;
 // *can we do this with a nested loop?
 function generateBoard(){
+    // *better board will hold onto all the values of the board
     betterBoard = [];
+    // *our x and y are flipped.  so we loop through y first(0-2)
     for(let yVal=0;yVal<3;yVal++){
+        // *we set an array to hold the values for each row of the board
         let boardRow=[];
+        // *now we loop through the x values(0-2)
         for(let xVal=0;xVal<3;xVal++){
+            // *here we create an object with the value(null, no one played) and the dom element
             let cellVal = {loc:document.querySelector(`#cell_${yVal}_${xVal}`), val:null};
+            // *now we push the object into the array holding the row data
             boardRow.push(cellVal);
         }
+        // *here we push the array to the betterBoard
         betterBoard.push(boardRow);
     }
 }
@@ -92,10 +99,14 @@ function checkWinner(){
             let cellVal = betterBoard[winningCombos[i][j].y][winningCombos[i][j].x].val;
             winCheck.push(cellVal);
         }
+        // *we can only have a winner if the first square isn't null, and matches the other two
         if(winCheck[0] && winCheck[0]==winCheck[1] && winCheck[0]==winCheck[2]){
             console.log(`The winner is ${winCheck[0]}`);
+            // *lets spread the good news about the winner
             document.querySelector("h1").innerText=`The Winner is ${winCheck[0]}`;
+            // *set the value of winner to break out of the while loop
             winner = winCheck[0];
+            // *break out of the for loop
             break;
         }
     }
