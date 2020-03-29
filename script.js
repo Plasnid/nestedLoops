@@ -8,7 +8,7 @@
 
 // *they often look like this:
 
-let gameBoard = [
+let rudimentaryGameBoard = [
     ["X","X","O"],
     ["X","O","O"],
     ["X","O","X"]
@@ -19,10 +19,10 @@ let gameBoard = [
 //* lets first look at the values of game board!
 
 //* what is gameBoard[0]
-console.log(gameBoard[0]); //* [null,null,null] ....it gave us back an array...its an array in an array!
+console.log(rudimentaryGameBoard[0]); //* [null,null,null] ....it gave us back an array...its an array in an array!
 //*guess what, gameBoard[1] and gameBoard[2], will give you the next two elements of that array
-console.log(gameBoard[1]);
-console.log(gameBoard[2]);
+console.log(rudimentaryGameBoard[1]);
+console.log(rudimentaryGameBoard[2]);
 
 //*  well thats cool, but how do I get one of the values?
 //*  the clue is in what all those logs return...an array
@@ -33,7 +33,7 @@ console.log(gameBoard[2]);
 //* usually it is x, then y... NOT ANYMORE!  Now it is Y then X, like this gameBoard[yCo-ordinate][xCoordinate]
 //* This should give us back an X...does it?  Lets try
 
-console.log(gameBoard[0][0]);//  *Yaaay!  It works!
+console.log(rudimentaryGameBoard[0][0]);//  *Yaaay!  It works!
 
 /* 
 *we can use this to find solutions...some winning patterns here: 
@@ -58,6 +58,61 @@ let winningCombos = [
 ]
 
 // *there you have it!  all the winning combos!
-// *now we need a board
+// *now we need a board, lets check out the html
+let betterBoard;
+// *can we do this with a nested loop?
+function generateBoard(){
+    betterBoard = [];
+    for(let yVal=0;yVal<3;yVal++){
+        let boardRow=[];
+        for(let xVal=0;xVal<3;xVal++){
+            let cellVal = {loc:document.querySelector(`#cell_${yVal}_${xVal}`), val:null};
+            boardRow.push(cellVal);
+        }
+        betterBoard.push(boardRow);
+    }
+}
+
+function checkWinner(){
+    console.log("checking for a winner");
+}
+
+// *time to generate a game!
+function playGame(){
+    // *set our turns to 0.  
+    let numTurns = 0;
+    // *X always starts
+    let xIsNext = true;
+    // *lets generate our board
+    generateBoard();
+    // *our board is a 2d array of objects!
+    console.log(betterBoard);
+    // *the while loop will keep the game playing until all the squares are filled
+    while(numTurns<9){
+        // *we can generate random moves each time!
+        let xPos = Math.floor(Math.random()*3);
+        let yPos = Math.floor(Math.random()*3);
+        console.log("cell to play");
+        console.log(betterBoard[yPos][xPos]);
+        // *if no one has played on the square we picked, we play there
+        if(betterBoard[yPos][xPos].val==null){
+            console.log("no one has played here!");
+            // *who gets the square, x or o?
+            let roundVal = xIsNext? "X":"O";
+            // *set the value of the square to the roundVal(x or o)
+            betterBoard[yPos][xPos].val = roundVal;
+            // *set the inner text of the html to the roundVal(x or o)
+            betterBoard[yPos][xPos].loc.innerText = roundVal;
+            // *now we can switch whos turn it is!
+            xIsNext = !xIsNext;
+            console.log(betterBoard[yPos][xPos]);
+            // *since we found a square to play on, move the turns up by 1
+            numTurns+=1;
+        }
+    }
+    console.log(betterBoard);
+}
+playGame();
+
 
 
