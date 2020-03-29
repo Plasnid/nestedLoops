@@ -33,7 +33,7 @@ console.log(rudimentaryGameBoard[2]);
 //* usually it is x, then y... NOT ANYMORE!  Now it is Y then X, like this gameBoard[yCo-ordinate][xCoordinate]
 //* This should give us back an X...does it?  Lets try
 
-console.log(rudimentaryGameBoard[0][0]);//  *Yaaay!  It works!
+console.log(rudimentaryGameBoard[0][0]);//  *Yaaay!  That is the value of X...what we expected!
 
 /* 
 *we can use this to find solutions...some winning patterns here: 
