@@ -94,12 +94,14 @@ function checkWinner(){
         }
         if(winCheck[0] && winCheck[0]==winCheck[1] && winCheck[0]==winCheck[2]){
             console.log(`The winner is ${winCheck[0]}`);
+            document.querySelector("h1").innerText=`The Winner is ${winCheck[0]}`;
             winner = winCheck[0];
             break;
         }
     }
     if(winner==null){
         console.log("It was a tie");
+        document.querySelector("h1").innerText=`It was a tie!`;
     }
 }
 

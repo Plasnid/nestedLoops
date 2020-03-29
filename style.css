@@ -4,6 +4,10 @@
     padding: 0;
 }
 
+h1{
+    text-align: center;
+}
+
 ul{
     /* *horizontally centering our board*/
     margin: 0 auto;
