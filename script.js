@@ -73,6 +73,7 @@ function generateBoard(){
         for(let xVal=0;xVal<3;xVal++){
             // *here we create an object with the value(null, no one played) and the dom element
             let cellVal = {loc:document.querySelector(`#cell_${yVal}_${xVal}`), val:null};
+            // *each time the board is generated we clear out all the previous values
             cellVal.loc.innerText = "";
             // *now we push the object into the array holding the row data
             boardRow.push(cellVal);
