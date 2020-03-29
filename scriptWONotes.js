@@ -25,7 +25,6 @@ function generateBoard(){
 }
 
 function checkWinner(){
-    console.log("checking for a winner");
     for(let i=0;i<winningCombos.length;i++){
         let winCheck=[];
         for(let j=0;j<winningCombos[i].length;j++){
@@ -39,7 +38,6 @@ function checkWinner(){
         }
     }
     if(winner==null){
-        console.log("It was a tie");
         document.querySelector("h1").innerText=`It was a tie!`;
     }
 }
@@ -49,7 +47,6 @@ function playGame(){
     let numTurns = 0;
     let xIsNext = true;
     generateBoard();
-    console.log(betterBoard);
     while(numTurns<9 && winner==null){
         let xPos = Math.floor(Math.random()*3);
         let yPos = Math.floor(Math.random()*3);
@@ -64,7 +61,6 @@ function playGame(){
     }
 }
 function init(){
-    console.log("I am initialized!");
     let playBtn = document.querySelector("#playGame");
     playBtn.addEventListener("click", playGame);
 }
