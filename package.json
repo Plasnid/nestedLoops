@@ -1,0 +1,24 @@
+{
+  "name": "nestedLoops",
+  "version": "1.0.0",
+  "description": "nested loop examples",
+  "main": "script.js",
+  "scripts": {
+    "lite": "lite-server",
+    "start": "npm run lite"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Plasnid/nestedLoops.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Plasnid/nestedLoops/issues"
+  },
+  "homepage": "https://github.com/Plasnid/nestedLoops#readme",
+  "devDependencies": {
+    "lite-server": "^2.5.4"
+  }
+}
