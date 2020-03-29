@@ -1,0 +1,34 @@
+/* *a very basic reset */
+*{
+    margin: 0;
+    padding: 0;
+}
+
+ul{
+    /* *horizontally centering our board*/
+    margin: 0 auto;
+    /*making our board 400 by 400px*/
+    width: 150px;
+    height: 150px;
+    /* *lets get rid of those pecky bullet points */
+    list-style: none;
+    /* *make the context flex that will wrap horizontall and equally space s*/
+    display: flex;
+    flex-wrap: wrap;
+    flex-flow: horizontal wrap;
+    justify-content: center;
+    align-content: space-between;
+    
+}
+
+li{
+    /* *lets make each cell have a black background, and take up aproximately 33% width and height*/
+    height:33%;
+    border: 1px solid black;
+    flex-basis:32%;
+    /* *now we center our text vertically and horizontall */
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}

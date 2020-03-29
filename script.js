@@ -35,3 +35,29 @@ console.log(gameBoard[2]);
 
 console.log(gameBoard[0][0]);//  *Yaaay!  It works!
 
+/* 
+*we can use this to find solutions...some winning patterns here: 
+*like [{y:0,x:0}, {y:1,x:0}, {y:2, x:0}]
+* or [{y:0,x:0},{y:0,x:1},{y:0,x:2}]
+* it would be nice to save all those...how about in a 2d array?
+* and perhaps check for winners in an automated fashion with....a nested loop
+* lets do both 
+*/
+
+// *lets start by creating a list of all possible winning combinations!
+// *and look at that, its a 2 dimensional array!
+let winningCombos = [
+    [{y:0,x:0}, {y:0,x:1}, {y:0, x:2}],  //*top row win
+    {y:1,x:0}, {y:1,x:1}, {y:1, x:2},  //* middle row win
+    {y:2,x:0}, {y:2,x:1}, {y:2, x:2}, //* bottom row win
+    {y:0,x:0}, {y:1,x:0}, {y:2, x:0}, //* left column win
+    {y:0,x:1}, {y:1,x:1}, {y:2, x:1}, //* middle column win
+    {y:0,x:2}, {y:1,x:2}, {y:2, x:2}, //* right column win
+    {y:0,x:0}, {y:1,x:1}, {y:2, x:2}, //* diagonal top left to bottom right
+    {y:2,x:0}, {y:1,x:1}, {y:0, x:2}  //* diagonal bottom left to top right
+]
+
+// *there you have it!  all the winning combos!
+// *now we need a board
+
+
