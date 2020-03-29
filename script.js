@@ -73,6 +73,7 @@ function generateBoard(){
         for(let xVal=0;xVal<3;xVal++){
             // *here we create an object with the value(null, no one played) and the dom element
             let cellVal = {loc:document.querySelector(`#cell_${yVal}_${xVal}`), val:null};
+            cellVal.loc.innerText = "";
             // *now we push the object into the array holding the row data
             boardRow.push(cellVal);
         }
@@ -88,13 +89,13 @@ function checkWinner(){
         for(let j=0;j<winningCombos[i].length;j++){
             //betterBoard[winningCombo[i][j]]
             // *this is the cell in winning combos showing a square in a winning pattern
-            console.log(i,j)
+            //console.log(i,j)
             // *this shows the object with co-ordinates to the cell on the board
-            console.log(winningCombos[i][j]);
+            //console.log(winningCombos[i][j]);
             // *this is the actual cell on the boards
-            console.log(betterBoard[winningCombos[i][j].y][winningCombos[i][j].x]);
+            //console.log(betterBoard[winningCombos[i][j].y][winningCombos[i][j].x]);
             // *this is the value on that actual cell on the board
-            console.log(betterBoard[winningCombos[i][j].y][winningCombos[i][j].x].val);
+            //console.log(betterBoard[winningCombos[i][j].y][winningCombos[i][j].x].val);
             // *lets push that value into an array to see if anyone won, or there is a tie
             let cellVal = betterBoard[winningCombos[i][j].y][winningCombos[i][j].x].val;
             winCheck.push(cellVal);
