@@ -48,18 +48,19 @@ console.log(rudimentaryGameBoard[0][0]);//  *Yaaay!  It works!
 // *and look at that, its a 2 dimensional array!
 let winningCombos = [
     [{y:0,x:0}, {y:0,x:1}, {y:0, x:2}],  //*top row win
-    {y:1,x:0}, {y:1,x:1}, {y:1, x:2},  //* middle row win
-    {y:2,x:0}, {y:2,x:1}, {y:2, x:2}, //* bottom row win
-    {y:0,x:0}, {y:1,x:0}, {y:2, x:0}, //* left column win
-    {y:0,x:1}, {y:1,x:1}, {y:2, x:1}, //* middle column win
-    {y:0,x:2}, {y:1,x:2}, {y:2, x:2}, //* right column win
-    {y:0,x:0}, {y:1,x:1}, {y:2, x:2}, //* diagonal top left to bottom right
-    {y:2,x:0}, {y:1,x:1}, {y:0, x:2}  //* diagonal bottom left to top right
+    [{y:1,x:0}, {y:1,x:1}, {y:1, x:2}],  //* middle row win
+    [{y:2,x:0}, {y:2,x:1}, {y:2, x:2}], //* bottom row win
+    [{y:0,x:0}, {y:1,x:0}, {y:2, x:0}], //* left column win
+    [{y:0,x:1}, {y:1,x:1}, {y:2, x:1}], //* middle column win
+    [{y:0,x:2}, {y:1,x:2}, {y:2, x:2}], //* right column win
+    [{y:0,x:0}, {y:1,x:1}, {y:2, x:2}], //* diagonal top left to bottom right
+    [{y:2,x:0}, {y:1,x:1}, {y:0, x:2}]  //* diagonal bottom left to top right
 ]
 
 // *there you have it!  all the winning combos!
 // *now we need a board, lets check out the html
 let betterBoard;
+let winner;
 // *can we do this with a nested loop?
 function generateBoard(){
     betterBoard = [];
@@ -75,6 +76,31 @@ function generateBoard(){
 
 function checkWinner(){
     console.log("checking for a winner");
+    for(let i=0;i<winningCombos.length;i++){
+        let winCheck=[];
+        for(let j=0;j<winningCombos[i].length;j++){
+            //betterBoard[winningCombo[i][j]]
+            // *this is the cell in winning combos showing a square in a winning pattern
+            console.log(i,j)
+            // *this shows the object with co-ordinates to the cell on the board
+            console.log(winningCombos[i][j]);
+            // *this is the actual cell on the boards
+            console.log(betterBoard[winningCombos[i][j].y][winningCombos[i][j].x]);
+            // *this is the value on that actual cell on the board
+            console.log(betterBoard[winningCombos[i][j].y][winningCombos[i][j].x].val);
+            // *lets push that value into an array to see if anyone won, or there is a tie
+            let cellVal = betterBoard[winningCombos[i][j].y][winningCombos[i][j].x].val;
+            winCheck.push(cellVal);
+        }
+        if(winCheck[0] && winCheck[0]==winCheck[1] && winCheck[0]==winCheck[2]){
+            console.log(`The winner is ${winCheck[0]}`);
+            winner = winCheck[0];
+            break;
+        }
+    }
+    if(winner==null){
+        console.log("It was a tie");
+    }
 }
 
 // *time to generate a game!
@@ -88,7 +114,7 @@ function playGame(){
     // *our board is a 2d array of objects!
     console.log(betterBoard);
     // *the while loop will keep the game playing until all the squares are filled
-    while(numTurns<9){
+    while(numTurns<9 && winner==null){
         // *we can generate random moves each time!
         let xPos = Math.floor(Math.random()*3);
         let yPos = Math.floor(Math.random()*3);
@@ -108,9 +134,12 @@ function playGame(){
             console.log(betterBoard[yPos][xPos]);
             // *since we found a square to play on, move the turns up by 1
             numTurns+=1;
+            // *lets console log the completed game
+            console.log(betterBoard);
+            // *but who won?
+            checkWinner()
         }
     }
-    console.log(betterBoard);
 }
 playGame();
 
