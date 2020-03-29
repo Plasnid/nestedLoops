@@ -36,3 +36,11 @@ li{
     align-items: center;
     justify-content: center;
 }
+
+#playGame{
+    width: 120px;
+    height: 20px;
+    border: 1px solid black;
+    background: yellow;
+    margin: 10px auto;
+}

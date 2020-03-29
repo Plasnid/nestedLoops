@@ -118,6 +118,7 @@ function checkWinner(){
 
 // *time to generate a game!
 function playGame(){
+    winner = null;
     // *set our turns to 0.  
     let numTurns = 0;
     // *X always starts
@@ -154,7 +155,14 @@ function playGame(){
         }
     }
 }
-playGame();
+function init(){
+    console.log("I am initialized!");
+    let playBtn = document.querySelector("#playGame");
+    playBtn.addEventListener("click", playGame);
+
+}
+document.addEventListener("DOMContentLoaded", init());
+//playGame();
 
 
 
